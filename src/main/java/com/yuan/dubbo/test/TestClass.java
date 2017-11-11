@@ -1,6 +1,8 @@
 package com.yuan.dubbo.test;
 
 import com.yuan.dubbo.facade.ITest;
+import com.yuan.dubbo.facade.UserFacade;
+import com.yuan.dubbo.facade.entity.UserInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -18,10 +20,20 @@ public class TestClass {
     @Autowired
     private ITest iTest;
 
+    @Autowired
+    private UserFacade userFacade;
+
     @org.junit.Test
     public void test(){
 
         String result = iTest.sayHello("yuanqing");
         logger.info(result);
+    }
+
+    @org.junit.Test
+    public void getUser(){
+
+        UserInfo userInfo = userFacade.findById("1");
+        logger.info("getUser userInfo={}",userInfo);
     }
 }
